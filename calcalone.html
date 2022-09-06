@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Alone</title>
+    <style>
+        * {
+            
+            font-size: 22px;
+            margin: 0;
+            padding: 0;
+            
+        }
+        .fundo {
+            background: linear-gradient(black,purple);
+            height: 100vh;
+            
+            text-align: center;
+
+        }
+        .calculadora {
+            font-family: 'Courier New', Courier, monospace;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform:translate(-50%,-50%);
+            border-radius: 10px;
+            background-color: rgb(58, 2, 2);
+            padding: 12px;
+         }
+         .botao {
+            color: black;
+            padding: 15px;
+            margin: 3px;
+            width: 50x;
+            height: 50px;
+            border: none;
+            cursor: pointer;
+         }
+         .botao:hover{
+            background-color: rgb(36, 37, 37);
+         }
+
+         #resultado {
+            background: white;
+            width: 200px;
+            height: 30px;
+            margin: 5px;
+            font-size: 20px;
+            text-align: right;
+         }
+    </style>
+</head>
+<body>
+    <div class="fundo">
+        <h1>Minha Calculadora</h1>
+        <div class="calculadora">
+            <h1>CalcAlone</h1>
+            <p id="resultado"></p>
+          <table>
+            <tr>
+                <td><button class="botao" onclick="clean()">C</button></td>
+                <td><button class="botao" onclick="back()"><</button></td>
+                <td><button class="botao" onclick="insert('/')">/</button></td>
+                <td><button class="botao" onclick="insert('+')">+</button></td>
+            </tr>
+            <tr>
+                <td><button class="botao" onclick="insert('7')">7</button></td>
+                <td><button class="botao" onclick="insert('8')">8</button></td>
+                <td><button class="botao" onclick="insert('9')">9</button></td>
+                <td><button class="botao" onclick="insert('-')">-</button></td>
+            </tr>
+            <tr>
+                <td><button class="botao" onclick="insert('4')">4</button></td>
+                <td><button class="botao" onclick="insert('5')">5</button></td>
+                <td><button class="botao" onclick="insert('6')">6</button></td>
+                <td><button class="botao" onclick="insert('*')">X</button></td>
+            </tr>
+            <tr>
+                <td><button class="botao" onclick="insert('1')">1</button></td>
+                <td><button class="botao" onclick="insert('2')">2</button></td>
+                <td><button class="botao" onclick="insert('3')">3</button></td>
+                <td rowspan="2"><button class="botao" style="height:119px;" onclick="calcular()">=</button></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button class="botao" style="width: 100px;" onclick="insert('0')">0</button></td>
+                <td><button class="botao" onclick="insert('.')">.</button></td>
+            </tr>
+        
+    </div>    
+    </div>
+    <script>
+        function insert(num){
+            var numero = document.getElementById('resultado').innerHTML
+            document.getElementById('resultado').innerHTML = numero + num;
+        }
+
+        function clean(){
+            document.getElementById('resultado').innerHTML = "";
+        }
+        function back(){
+            var resultado = document.getElementById('resultado').innerHTML;
+            document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length -1)
+        }
+        function calcular(){
+            var resultado = document.getElementById('resultado').innerHTML;
+            if(resultado){
+                document.getElementById('resultado').innerHTML = eval(resultado)
+            }
+        }
+    </script>
+</body>
+</html>
